@@ -1,0 +1,31 @@
+<html>
+
+<head>
+<title>HTC Typing Bug</title>
+<script type='text/javascript'>
+
+function test() {
+	var input = document.getElementById('input');	
+	var output = document.getElementById('output');
+		
+	output.value = input.value;
+	return false;
+}
+</script>
+
+</head>
+
+<body>
+
+<form action="#" onsubmit="return test()">
+<strong>Follow the steps below:</strong>
+<ol>
+<li>Type Foo Here: <input id='input' type='text' name='input' /></li>
+<li><input type='submit' value='Then click here' /></li>
+<li>And then foo displays here: <input id='output' type='text' name='output' /></li>
+</ol>
+</form>
+
+</body>
+
+</html>
