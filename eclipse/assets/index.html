@@ -14,8 +14,9 @@ function resetAll() {
 	document.getElementById('testInput').value = '';
 	record('ONKEYPRESS', 'red');
 	record('ONPASTE', 'red');
-	record('ONFOCUS', 'red');
+	record('ONFOCUS', 'gray');
 	record('ONKEYUP', 'red');
+	record('ONKEYDOWN', 'red');
 }
 </script>
 
@@ -27,7 +28,7 @@ p { color: red; }
 
 <body>
 <h1>JS &lt;input&gt; event test</h1>
-<form action="#" onsubmit="return false;">
+<form action="#" onsubmit="resetAll(); return false;">
 <ol>
 <li>Type Here:
 <INPUT CLASS="FB BK UB"
@@ -35,6 +36,7 @@ p { color: red; }
 	   ONPASTE="record('ONPASTE')"
 	   ONFOCUS="record('ONFOCUS')"
 	   ONKEYUP="record('ONKEYUP')"
+	   ONKEYDOWN="record('ONKEYDOWN')"
 	   TYPE="TEXT"
 	   NAME="F1_0_2"
 	   VALUE=""
@@ -43,10 +45,11 @@ p { color: red; }
 	   ID="testInput" />
 </li>
 <li>Are any of the following still red?
-<p id='ONKEYPRESS'>ONKEYPRESS</p>
-<p id='ONPASTE' style='color: gray;'>ONPASTE -- expected failure: known bug in android :(</p>
 <p id='ONFOCUS'>ONFOCUS</p>
+<p id='ONKEYPRESS'>ONKEYPRESS</p>
+<p id='ONKEYDOWN'>ONKEYDOWN</p>
 <p id='ONKEYUP'>ONKEYUP</p>
+<p id='ONPASTE' style='color: gray;'>ONPASTE -- expected failure: known bug in android :(</p>
 </li>
 </ol>
 <button onclick='resetAll()'>Reset Test</button>
