@@ -3,28 +3,55 @@
 <head>
 <title>HTC Typing Bug</title>
 <script type='text/javascript'>
+function record(name, color) {
+	if (color == null) {
+		color = 'green';
+	}
+	document.getElementById(name).style.color = color;
+}
 
-function test() {
-	var input = document.getElementById('input');	
-	var output = document.getElementById('output');
-		
-	output.value = input.value;
-	return false;
+function resetAll() {
+	document.getElementById('testInput').value = '';
+	record('ONKEYPRESS', 'red');
+	record('ONPASTE', 'red');
+	record('ONFOCUS', 'red');
+	record('ONKEYUP', 'red');
 }
 </script>
+
+<style type='text/css'>
+p { color: red; }
+</style>
 
 </head>
 
 <body>
-
-<form action="#" onsubmit="return test()">
-<strong>Follow the steps below:</strong>
+<h1>JS &lt;input&gt; event test</h1>
+<form action="#" onsubmit="return false;">
 <ol>
-<li>Type Foo Here: <input id='input' type='text' name='input' /></li>
-<li><input type='submit' value='Then click here' /></li>
-<li>And then foo displays here: <input id='output' type='text' name='output' /></li>
+<li>Type Here:
+<INPUT CLASS="FB BK UB"
+	   ONKEYPRESS="record('ONKEYPRESS')"
+	   ONPASTE="record('ONPASTE')"
+	   ONFOCUS="record('ONFOCUS')"
+	   ONKEYUP="record('ONKEYUP')"
+	   TYPE="TEXT"
+	   NAME="F1_0_2"
+	   VALUE=""
+	   SIZE="20"
+	   MAXLENGTH="20"
+	   ID="testInput" />
+</li>
+<li>Are any of the following still red?
+<p id='ONKEYPRESS'>ONKEYPRESS</p>
+<p id='ONPASTE' style='color: gray;'>ONPASTE -- expected failure: known bug in android :(</p>
+<p id='ONFOCUS'>ONFOCUS</p>
+<p id='ONKEYUP'>ONKEYUP</p>
+</li>
 </ol>
+<button onclick='resetAll()'>Reset Test</button>
 </form>
+
 
 </body>
 
