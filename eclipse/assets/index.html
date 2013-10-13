@@ -13,10 +13,11 @@ function record(name, color) {
 function resetAll() {
 	document.getElementById('testInput').value = '';
 	record('ONKEYPRESS', 'red');
-	record('ONPASTE', 'red');
-	record('ONFOCUS', 'gray');
+	record('ONPASTE', 'gray');
+	record('ONFOCUS', 'red');
 	record('ONKEYUP', 'red');
 	record('ONKEYDOWN', 'red');
+	record('ONINPUT', 'red');
 }
 </script>
 
@@ -37,6 +38,7 @@ p { color: red; }
 	   ONFOCUS="record('ONFOCUS')"
 	   ONKEYUP="record('ONKEYUP')"
 	   ONKEYDOWN="record('ONKEYDOWN')"
+	   ONINPUT="record('ONINPUT')"
 	   TYPE="TEXT"
 	   NAME="F1_0_2"
 	   VALUE=""
@@ -49,6 +51,7 @@ p { color: red; }
 <p id='ONKEYPRESS'>ONKEYPRESS</p>
 <p id='ONKEYDOWN'>ONKEYDOWN</p>
 <p id='ONKEYUP'>ONKEYUP</p>
+<p id='ONINPUT'>ONINPUT</p>
 <p id='ONPASTE' style='color: gray;'>ONPASTE -- expected failure: known bug in android :(</p>
 </li>
 </ol>
